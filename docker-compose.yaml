@@ -1,0 +1,20 @@
+version: "3.1"
+services:
+    mariadb:
+        image: mariadb:5.5
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+        ports:
+            - 3306:3306
+
+    web:
+        build: docker/httpd
+        volumes:
+            - /docker/symfony:/usr/local/apache2/htdocs
+        ports:
+            - 80:80
+
+    php-fpm:
+        image: php:7.2-fpm-stretch
+        volumes:
+            - /docker/symfony:/usr/local/apache2/htdocs
