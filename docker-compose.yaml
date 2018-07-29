@@ -15,6 +15,6 @@ services:
             - 80:80
 
     php-fpm:
-        image: php:7.2-fpm-stretch
+        build: docker/php
         volumes:
             - /docker/symfony:/usr/local/apache2/htdocs
