@@ -10,11 +10,11 @@ services:
     web:
         build: docker/httpd
         volumes:
-            - /docker/symfony:/usr/local/apache2/htdocs
+            - $VOLUME_MOUNT_PATH:/usr/local/apache2/htdocs
         ports:
             - 80:80
 
     php-fpm:
         build: docker/php
         volumes:
-            - /docker/symfony:/usr/local/apache2/htdocs
+            - $VOLUME_MOUNT_PATH:/usr/local/apache2/htdocs
